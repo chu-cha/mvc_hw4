@@ -56,7 +56,7 @@ jobs:
       run: >
         cmake -B ${{ steps.strings.outputs.build-output-dir }}
         -DCMAKE_BUILD_TYPE=${{ matrix.build_type }}
-        -S ${{ github.workspace }}/src
+        -S ${{ github.workspace }}
          cmake --build ${{ steps.strings.outputs.build-output-dir }} 
          #cmake --build ${{ steps.strings.outputs.build-output-dir }} --target test
          cmake --build ${{ steps.strings.outputs.build-output-dir }} --target package
