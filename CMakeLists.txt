@@ -1,24 +1,10 @@
 
-cmake_minimum_required(VERSION 3.5)
+cmake_minimum_required(VERSION 3.10)
 
 project(mvc )
 
-include_directories(src)
-
-set(HEADER_FILES
-    src/primitive.h
-	src/real_primitives.h
-    src/model.h
-    src/view.h
-    src/controller.h
-)
-
-set(SOURCE_FILES
-    src/main.cpp
-    src/model.cpp
-    src/view.cpp
-    src/controller.cpp
-)
+file(GLOB HEADER_FILES "*.h")
+file(GLOB CPP_FILES "*.cpp")
 
 add_executable(mvc ${CPP_FILES} ${HEADER_FILES} )
 
@@ -47,3 +33,4 @@ install(TARGETS mvc RUNTIME DESTINATION bin)
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_CONTACT example@example.com)
 include(CPack)
+
