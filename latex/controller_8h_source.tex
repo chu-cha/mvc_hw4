@@ -1,0 +1,58 @@
+\doxysection{controller.\+h}
+\hypertarget{controller_8h_source}{}\label{controller_8h_source}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{00001\ \textcolor{preprocessor}{\#pragma\ once}}
+\DoxyCodeLine{00002\ }
+\DoxyCodeLine{00003\ \textcolor{preprocessor}{\#include\ "{}view.h"{}}}
+\DoxyCodeLine{00004\ }
+\DoxyCodeLine{00010\ }
+\DoxyCodeLine{00011\ \textcolor{keyword}{class\ }\mbox{\hyperlink{class_controller}{Controller}}\ \{}
+\DoxyCodeLine{00012\ \textcolor{keyword}{public}:}
+\DoxyCodeLine{00020\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_controller_a837ece5c09bbe81d8cfc79ec87881ed2}{import\_from\_file}}(std::string\ filename)\ \{}
+\DoxyCodeLine{00021\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Import\ from\ file\(\backslash\)n"{}};}
+\DoxyCodeLine{00022\ }
+\DoxyCodeLine{00023\ \ \ \ \ \ \ \ \ \textcolor{comment}{//\ load\ model\ from\ file}}
+\DoxyCodeLine{00024\ \ \ \ \ \ \ \ \ \mbox{\hyperlink{class_model}{Model}}\ loaded\_model;}
+\DoxyCodeLine{00025\ \ \ \ \ \ \ \ \ p\_model.reset(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_model}{Model}}(loaded\_model));}
+\DoxyCodeLine{00026\ }
+\DoxyCodeLine{00027\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//or\ false\ if\ import\ failed}}
+\DoxyCodeLine{00028\ \ \ \ \ \}}
+\DoxyCodeLine{00029\ }
+\DoxyCodeLine{00030\ }
+\DoxyCodeLine{00038\ \ \ \ \ \textcolor{keywordtype}{bool}\ \mbox{\hyperlink{class_controller_a0078f08c363125c0136805d6f1b46479}{export\_to\_file}}(std::string\ filename)\ \{}
+\DoxyCodeLine{00039\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Export\ to\ file\(\backslash\)n"{}};}
+\DoxyCodeLine{00040\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ \textcolor{keyword}{true};\ \textcolor{comment}{//or\ false\ if\ export\ failed}}
+\DoxyCodeLine{00041\ \ \ \ \ \}}
+\DoxyCodeLine{00042\ }
+\DoxyCodeLine{00043\ }
+\DoxyCodeLine{00047\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_ad6737799beb531edfc79b13cae60a117}{create\_new\_scene}}()\ \{}
+\DoxyCodeLine{00048\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}Create\ new\ scene\(\backslash\)n"{}};}
+\DoxyCodeLine{00049\ \ \ \ \ \ \ \ \ p\_model.reset(\textcolor{keyword}{new}\ \mbox{\hyperlink{class_model}{Model}});}
+\DoxyCodeLine{00050\ \ \ \ \ \}}
+\DoxyCodeLine{00051\ }
+\DoxyCodeLine{00052\ }
+\DoxyCodeLine{00062\ \ \ \ \ \textcolor{keywordtype}{int}\ \mbox{\hyperlink{class_controller_acac567ce9bb28577a79bee7a451bdf63}{add\_primitive}}(Primitive::Ptr\ p)\ \{}
+\DoxyCodeLine{00063\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p\_model)}
+\DoxyCodeLine{00064\ \ \ \ \ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ p\_model-\/>add\_primitive(p);}
+\DoxyCodeLine{00065\ }
+\DoxyCodeLine{00066\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}You\ haven't\ created\ or\ loaded\ scene\(\backslash\)n"{}};}
+\DoxyCodeLine{00067\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{return}\ -\/1;}
+\DoxyCodeLine{00068\ \ \ \ \ \}}
+\DoxyCodeLine{00069\ }
+\DoxyCodeLine{00076\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_a8b77e29e7de4a6523ff556a624fa6032}{remove\_primitive}}(\textcolor{keywordtype}{int}\ \textcolor{keywordtype}{id})\ \{}
+\DoxyCodeLine{00077\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p\_model)}
+\DoxyCodeLine{00078\ \ \ \ \ \ \ \ \ \ \ \ \ p\_model-\/>remove\_primitive(\textcolor{keywordtype}{id});}
+\DoxyCodeLine{00079\ \ \ \ \ \ \ \ \ std::cout\ <<\ \textcolor{stringliteral}{"{}You\ haven't\ created\ or\ loaded\ scene\(\backslash\)n"{}};}
+\DoxyCodeLine{00080\ \ \ \ \ \}}
+\DoxyCodeLine{00081\ }
+\DoxyCodeLine{00085\ \ \ \ \ \textcolor{keywordtype}{void}\ \mbox{\hyperlink{class_controller_ae06c69de06696270d53dfce0002a80d6}{show\_model}}()\ \{}
+\DoxyCodeLine{00086\ \ \ \ \ \ \ \ \ \textcolor{keywordflow}{if}\ (p\_model)}
+\DoxyCodeLine{00087\ \ \ \ \ \ \ \ \ \ \ \ \ view.show\_model(p\_model);}
+\DoxyCodeLine{00088\ \ \ \ \ \}}
+\DoxyCodeLine{00089\ }
+\DoxyCodeLine{00090\ \textcolor{keyword}{private}:}
+\DoxyCodeLine{00091\ \ \ \ \ std::shared\_ptr<Model>\ p\_model;}
+\DoxyCodeLine{00092\ \ \ \ \ \mbox{\hyperlink{class_view}{View}}\ view;}
+\DoxyCodeLine{00093\ \};}
+
+\end{DoxyCode}
