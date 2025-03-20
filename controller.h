@@ -3,91 +3,83 @@
 #include "view.h"
 
 /**
-    \brief Класс, управляющий представлением сцены.
-
-    Содержит методы для работы с файлами, а также для добавления.удаления графических примитивов в текущей сцене.
-*/
-
+ * @brief Class managing the scene representation.
+ *
+ * Contains methods for working with files, as well as for adding/removing graphical primitives to/from the current scene.
+ */
 class Controller {
 public:
     /**
-    \brief загрузка сцены из файла
-
-    \param [in] filename Имя файла, из которого должна быть загружена сцена
-
-    \return Успешно ли произшла загрузка сцены из файла
-    */
+     * @brief Loads a scene from a file.
+     *
+     * @param [in] filename The name of the file from which the scene should be loaded.
+     * @return True if the scene was successfully loaded, otherwise false.
+     */
     bool import_from_file(std::string filename) {
         std::cout << "Import from file\n";
 
-        // load model from file
+        // Load model from file
         Model loaded_model;
         p_model.reset(new Model(loaded_model));
 
-        return true; //or false if import failed
+        return true; // or false if import failed
     }
 
-
     /**
-    \brief сохранение сцены в файл
-
-    \param [in] filename Имя файла, в который должна быть загружена сцена
-
-    \return Успешно ли произшла загрузка сцены в файл
-    */
+     * @brief Saves the scene to a file.
+     *
+     * @param [in] filename The name of the file to which the scene should be saved.
+     * @return True if the scene was successfully saved, otherwise false.
+     */
     bool export_to_file(std::string filename) {
         std::cout << "Export to file\n";
-        return true; //or false if export failed
+        return true; // or false if export failed
     }
 
-
     /**
-    \brief создание новой пустой сцены
-    */
+     * @brief Creates a new empty scene.
+     */
     void create_new_scene() {
         std::cout << "Create new scene\n";
         p_model.reset(new Model);
     }
 
-
     /**
-    \brief добавление примитива в текущую сцену
-
-    \param [in] p std::shared_ptr на примитив, который нужно добавить в сцену
-
-    \return хендлер, через который можно управлять примитивом (id).
-
-    \warning Если примитив не был добавлен, возвращает id = -1
-    */
+     * @brief Adds a primitive to the current scene.
+     *
+     * @param [in] p A std::shared_ptr to the primitive to be added to the scene.
+     * @return A handler (ID) through which the primitive can be managed.
+     * @warning If the primitive was not added, returns ID = -1.
+     */
     int add_primitive(Primitive::Ptr p) {
         if (p_model)
             return p_model->add_primitive(p);
 
-        std::cout << "You haven't created or loaded scene\n";
+        std::cout << "You haven't created or loaded a scene\n";
         return -1;
     }
 
     /**
-    \brief удаление примитива из текущей сцены
-
-    \param [in] id хендлер примитива, который необходимо удалить
-
-    */
+     * @brief Removes a primitive from the current scene.
+     *
+     * @param [in] id The handler (ID) of the primitive to be removed.
+     */
     void remove_primitive(int id) {
         if (p_model)
             p_model->remove_primitive(id);
-        std::cout << "You haven't created or loaded scene\n";
+        else
+            std::cout << "You haven't created or loaded a scene\n";
     }
 
     /**
-    \brief отображение сцены
-    */
+     * @brief Displays the scene.
+     */
     void show_model() {
         if (p_model)
             view.show_model(p_model);
     }
 
 private:
-    std::shared_ptr<Model> p_model;
-    View view;
+    std::shared_ptr<Model> p_model; ///< Pointer to the current model.
+    View view; ///< View object for displaying the model.
 };
