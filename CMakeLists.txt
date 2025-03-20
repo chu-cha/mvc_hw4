@@ -3,9 +3,11 @@ cmake_minimum_required(VERSION 3.5)
 
 project(mvc )
 
+include_directories(src)
+
 set(HEADER_FILES
     src/primitive.h
-	src/real_primitive.h
+	src/real_primitives.h
     src/model.h
     src/view.h
     src/controller.h
@@ -45,4 +47,3 @@ install(TARGETS mvc RUNTIME DESTINATION bin)
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_CONTACT example@example.com)
 include(CPack)
-
