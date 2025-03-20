@@ -1,4 +1,7 @@
+#include<list>
+
 #include "controller.h"
+
 
 int main() {
     //save here ids of loaded primitives.
