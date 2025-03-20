@@ -1,3 +1,14 @@
 
 Thumbs.db
+
+# Doxygen documentation
+html/
+
+# CLion project
+.idea/
+cmake-build-debug/
+cmake-build-release/
+
+# Visual Studio Code 
+.vscode/
 build/
