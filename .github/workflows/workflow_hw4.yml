@@ -23,6 +23,22 @@ jobs:
 
     steps:
     - uses: actions/checkout@v4
+    
+    - name: Install Doxygen
+      run: sudo apt-get install doxygen
+
+    # Create documentation   
+    - name: Create documentation     
+      run: doxygen
+        
+    - name: Upload artifact
+      uses: actions/upload-pages-artifact@v3
+      with:
+        # Upload entire repository
+        path: './html/'
+    - name: Deploy to GitHub Pages
+      id: deployment
+      uses: actions/deploy-pages@v4
 
     - name: Set reusable strings
       id: strings
@@ -64,15 +80,4 @@ jobs:
         asset_path: ${{ steps.strings.outputs.build-output-dir }}/mvc-0.1.1-Linux.deb
         asset_name: mvc-0.1.1-Linux.deb
         asset_content_type: application/vnd.debian.binary-package
-        
-    - name: Install Doxygen
-      run: sudo apt-get install doxygen
-
-    - name: Generate Doxygen Documentation
-      run: doxygen Doxyfile
-
-    - name: Deploy to GitHub Pages
-      uses: peaceiris/actions-gh-pages@v3
-      with:
-        github_token: ${{ secrets.GITHUB_TOKEN }}
-        publish_dir: ./docs
+       
