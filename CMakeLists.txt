@@ -3,8 +3,10 @@ cmake_minimum_required(VERSION 3.5)
 
 project(mvc )
 
-# configure directories
-set(SOURCE_PATH "${PROJECT_SOURCE_DIR}/src")
+file(GLOB HEADER_FILES "/src/*.h")
+file(GLOB CPP_FILES "/src/*.cpp")
+
+add_executable(mvc ${CPP_FILES} ${HEADER_FILES} )
 
 set (ALL_SOURCES mvc)
 
@@ -31,6 +33,4 @@ install(TARGETS mvc RUNTIME DESTINATION bin)
 set(CPACK_GENERATOR DEB)
 set(CPACK_PACKAGE_CONTACT example@example.com)
 include(CPack)
-
-add_subdirectory(src)
 
