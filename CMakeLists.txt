@@ -3,8 +3,20 @@ cmake_minimum_required(VERSION 3.5)
 
 project(mvc )
 
-file(GLOB HEADER_FILES "/src/*.h")
-file(GLOB CPP_FILES "/src/*.cpp")
+set(HEADER_FILES
+    src/primitive.h
+	src/real_primitive.h
+    src/model.h
+    src/view.h
+    src/controller.h
+)
+
+set(SOURCE_FILES
+    src/main.cpp
+    src/model.cpp
+    src/view.cpp
+    src/controller.cpp
+)
 
 add_executable(mvc ${CPP_FILES} ${HEADER_FILES} )
 
